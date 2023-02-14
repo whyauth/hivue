@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引人Vue -->
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+
+    </div>
+
+    <div>
+        <h4>Vue DIY</h4>
+        <form action="">
+            姓名：<input type="text" v-model="name"/>
+            身高：<input type="text" v-model="heigh"/>
+        </form>
+    </div>
+
+    <script>
+
+        var vm = new Vue({
+            el:"#root",
+            data:{
+                name:"why",
+                heigh:17
+            }
+        })
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- Vue的 数据劫持、数据代理、计算属性 用到了 Object.defineProperty -->
+    <div id="root">
+
+    </div>
+    <script>
+
+        Vue.config.productionTip = false
+
+        let number = 19
+        const data = {
+            name:'why',
+            age:'20'
+        }
+
+        // data.sex='man'
+
+        Object.defineProperty(data, 'sex', {
+            value:'man'
+        })
+
+        console.log(data);
+        
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+
+    <script>
+
+        Vue.config.productionTip = false
+
+        // 定义学生组件
+        const student = Vue.extend({
+            name:'student',
+            template:`
+                <div>
+                    <h2>学生名称：{{name}}</h2>
+                    <h2>家庭住址：{{address}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                    name:'why',
+                    address:'鹤霞路600弄'
+                }
+            },
+
+        })
+
+        // 定义学校组件
+        const school = Vue.extend({
+            name:'school',
+            template:`
+                <div>
+                    <student></student>
+                    <h2>学校名称：{{name}}</h2>    
+                    <h2>学校地址：{{address}}</h2>
+                </div>
+            `,
+            data(){
+                return{
+                    name:'上海高级中学',
+                    address:'嘉定区xxx路'
+                }
+            },
+            components:{
+                student
+            }
+        })
+        
+        
+        // 定义hello组件
+        const hello = Vue.extend({
+            name:'',
+            template:`
+                <h1>{{title}}</h1>
+            `,
+            data(){
+                return {
+                    title:'这是一个hello组件标题',
+                }
+            }
+        })
+
+        const app = Vue.extend({
+            name:'app',
+            template:`
+                <div>
+                    <hello></hello>
+                    <school></school>
+                </div>
+            `,
+            components:{
+                school,
+                hello
+            }
+        })
+
+
+        const vm = new Vue({
+            el:'#root',
+            template:`<app></app>`,
+            data:{
+                msg:'嵌套组件示例'
+            },
+            components:{
+                app
+            }
+        })
+
+    </script>
+</body>
+</html>

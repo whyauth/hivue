@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        主要：组件的定义，注册，使用 
+        
+        非单文件组件：
+            一个文件中包含有n个组件(a.html文件中)
+        单文件组件：
+            一个文件中只包含1个组件(a.vue文件)
+
+
+     -->
+    <div id="root">
+        <h2>这是一个非单文件组件</h2>
+        <School></School>
+        <Student></Student>
+        <Hello></Hello>
+    </div>
+
+
+    <div id="root2">
+        <Hello></Hello>
+    </div>
+    
+
+    <script>
+        Vue.config.productionTip = false
+
+        // 创建学校组件
+        const School = Vue.extend({
+            name:'School',
+            data(){
+                return {
+                    name:'上海一中',
+                    address:'鹤霞路111'
+                }
+            },
+            template:`
+                <div>
+                    <h2>学校名称：{{name}}</h2>    
+                    <h2>学校地址：{{address}}</h2>    
+                </div>
+            `,
+        })
+
+        console.log(School);
+        
+
+
+        // 创建学生组件
+        const Student = Vue.extend({
+            name:'Student',
+            data(){
+                return {
+                    name:'why',
+                    age:31
+                }
+            },
+            template:`
+                <div>
+                    <h2>学生名称：{{name}}</h2>    
+                    <h2>学生年龄：{{age}}</h2>    
+                </div>
+            `,
+        })
+
+        console.log(Student);
+
+
+        const Hello = Vue.extend({
+            name:'hello',
+            data(){
+                return {
+                    name:'你好'
+                }
+            },
+            template:`<h2>这是一个hello组件</h2>`
+        })
+
+        console.log(Hello);
+        
+        
+        Vue.component('hello', Hello)
+
+        const cp = Vue.component('hello')
+        console.dir(cp);
+        
+
+        new Vue({
+            el:"#root",
+
+            data:{
+                msg:'实例里面的数据'
+            },
+
+            components:{
+                Student,
+                School,
+            }
+            
+        })
+
+
+        new Vue({
+            el:'#root2'
+        })
+
+        
+
+    </script>
+</body>
+</html>
